@@ -1,0 +1,110 @@
+
+TIPO DE DATOS POR DF Y COLUMNA
+
+
+No fue posible inferir el "schema" de los datos lo cual indica la presencia de elementos
+que no corresponden con el tipo de dato de la columna como valores nulos, caracteres especiales, etc.
+
+
+Schema for Cliente
+root
+ |-- ID: string (nullable = true)
+ |-- Provincia: string (nullable = true)
+ |-- Nombre_y_Apellido: string (nullable = true)
+ |-- Domicilio: string (nullable = true)
+ |-- Telefono: string (nullable = true)
+ |-- Edad: string (nullable = true)
+ |-- Localidad: string (nullable = true)
+ |-- X: string (nullable = true)
+ |-- Y: string (nullable = true)
+ |-- col10: string (nullable = true)
+
+Schema for TiposDeGasto
+root
+ |-- IdTipoGasto: string (nullable = true)
+ |-- Descripcion: string (nullable = true)
+ |-- Monto_Aproximado: string (nullable = true)
+
+Schema for Producto
+root
+ |-- ID_PRODUCTO: string (nullable = true)
+ |-- Concepto: string (nullable = true)
+ |-- Tipo: string (nullable = true)
+ |--  Precio : string (nullable = true)
+
+Schema for Empleado
+root
+ |-- ID_empleado: string (nullable = true)
+ |-- Apellido: string (nullable = true)
+ |-- Nombre: string (nullable = true)
+ |-- Sucursal: string (nullable = true)
+ |-- Sector: string (nullable = true)
+ |-- Cargo: string (nullable = true)
+ |-- Salario: string (nullable = true)
+
+Schema for Compra
+root
+ |-- IdCompra: string (nullable = true)
+ |-- Fecha: string (nullable = true)
+ |-- IdProducto: string (nullable = true)
+ |-- Cantidad: string (nullable = true)
+ |-- Precio: string (nullable = true)
+ |-- IdProveedor: string (nullable = true)
+
+Schema for Proveedor
+root
+ |-- IDProveedor: string (nullable = true)
+ |-- Nombre: string (nullable = true)
+ |-- Address: string (nullable = true)
+ |-- City: string (nullable = true)
+ |-- State: string (nullable = true)
+ |-- Country: string (nullable = true)
+ |-- departamen: string (nullable = true)
+
+Schema for Gasto
+root
+ |-- IdGasto: string (nullable = true)
+ |-- IdSucursal: string (nullable = true)
+ |-- IdTipoGasto: string (nullable = true)
+ |-- Fecha: string (nullable = true)
+ |-- Monto: string (nullable = true)
+
+Schema for Sucursal
+root
+ |-- ID: string (nullable = true)
+ |-- Sucursal: string (nullable = true)
+ |-- Direccion: string (nullable = true)
+ |-- Localidad: string (nullable = true)
+ |-- Provincia: string (nullable = true)
+ |-- Latitud: string (nullable = true)
+ |-- Longitud: string (nullable = true)
+
+Schema for CanalDeVenta
+root
+ |-- CODIGO: string (nullable = true)
+ |-- DESCRIPCION: string (nullable = true)
+
+Schema for Venta
+root
+ |-- IdVenta: string (nullable = true)
+ |-- Fecha: string (nullable = true)
+ |-- Fecha_Entrega: string (nullable = true)
+ |-- IdCanal: string (nullable = true)
+ |-- IdCliente: string (nullable = true)
+ |-- IdSucursal: string (nullable = true)
+ |-- IdEmpleado: string (nullable = true)
+ |-- IdProducto: string (nullable = true)
+ |-- Precio: string (nullable = true)
+ |-- Cantidad: string (nullable = true)
+
+Schema for Calendario
+root
+ |-- IdFecha: string (nullable = true)
+ |-- fecha: string (nullable = true)
+ |-- anio: string (nullable = true)
+ |-- mes: string (nullable = true)
+ |-- dia: string (nullable = true)
+ |-- trimestre: string (nullable = true)
+ |-- semana: string (nullable = true)
+ |-- dia_nombre: string (nullable = true)
+ |-- mes_nombre: string (nullable = true)

@@ -1,0 +1,47 @@
+
+DETECCIÓN DE CARACTERES ESPECIALES POR DF Y COLUMNA
+
+No tuve en cuenta las columnas donde el tipo de dato correspondiente es "string".
+
+
+Cliente X
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,| 3345|
++-------------+-----+
+
+Cliente Y
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,| 3347|
++-------------+-----+
+
+Producto  Precio
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,|  291|
++-------------+-----+
+
+Empleado Salario
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,|  267|
++-------------+-----+
+
+Sucursal Latitud
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,|   31|
++-------------+-----+
+
+Sucursal Longitud
++-------------+-----+
+|special_chars|count|
++-------------+-----+
+|            ,|   31|
++-------------+-----+

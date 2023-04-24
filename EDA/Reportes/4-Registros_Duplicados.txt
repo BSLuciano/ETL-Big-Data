@@ -1,0 +1,25 @@
+
+REGISTROS DUPLICADOS POR DF
+
+
+DataFrame: Cliente => Registros Duplicados: 0
+
+DataFrame: TiposDeGasto => Registros Duplicados: 0
+
+DataFrame: Producto => Registros Duplicados: 0
+
+DataFrame: Empleado => Registros Duplicados: 0
+
+DataFrame: Compra => Registros Duplicados: 0
+
+DataFrame: Proveedor => Registros Duplicados: 0
+
+DataFrame: Gasto => Registros Duplicados: 0
+
+DataFrame: Sucursal => Registros Duplicados: 0
+
+DataFrame: CanalDeVenta => Registros Duplicados: 0
+
+DataFrame: Venta => Registros Duplicados: 0
+
+DataFrame: Calendario => Registros Duplicados: 0

@@ -1,0 +1,27 @@
+DIMENSION DF
+
+DF: Cliente => Dimension: 3407 x 10
+DF: TiposDeGasto => Dimension: 4 x 3
+DF: Producto => Dimension: 291 x 4
+DF: Empleado => Dimension: 267 x 7
+DF: Compra => Dimension: 11539 x 6
+DF: Proveedor => Dimension: 14 x 7
+DF: Gasto => Dimension: 8640 x 5
+DF: Sucursal => Dimension: 31 x 7
+DF: CanalDeVenta => Dimension: 3 x 2
+DF: Venta => Dimension: 46645 x 10
+DF: Calendario => Dimension: 2191 x 9
+
+NOMBRE COLUMNAS
+
+DF: Cliente => Columnas: ['ID', 'Provincia', 'Nombre_y_Apellido', 'Domicilio', 'Telefono', 'Edad', 'Localidad', 'X', 'Y', 'col10']
+DF: TiposDeGasto => Columnas: ['IdTipoGasto', 'Descripcion', 'Monto_Aproximado']
+DF: Producto => Columnas: ['ID_PRODUCTO', 'Concepto', 'Tipo', ' Precio ']
+DF: Empleado => Columnas: ['ID_empleado', 'Apellido', 'Nombre', 'Sucursal', 'Sector', 'Cargo', 'Salario']
+DF: Compra => Columnas: ['IdCompra', 'Fecha', 'IdProducto', 'Cantidad', 'Precio', 'IdProveedor']
+DF: Proveedor => Columnas: ['IDProveedor', 'Nombre', 'Address', 'City', 'State', 'Country', 'departamen']
+DF: Gasto => Columnas: ['IdGasto', 'IdSucursal', 'IdTipoGasto', 'Fecha', 'Monto']
+DF: Sucursal => Columnas: ['ID', 'Sucursal', 'Direccion', 'Localidad', 'Provincia', 'Latitud', 'Longitud']
+DF: CanalDeVenta => Columnas: ['CODIGO', 'DESCRIPCION']
+DF: Venta => Columnas: ['IdVenta', 'Fecha', 'Fecha_Entrega', 'IdCanal', 'IdCliente', 'IdSucursal', 'IdEmpleado', 'IdProducto', 'Precio', 'Cantidad']
+DF: Calendario => Columnas: ['IdFecha', 'fecha', 'anio', 'mes', 'dia', 'trimestre', 'semana', 'dia_nombre', 'mes_nombre']

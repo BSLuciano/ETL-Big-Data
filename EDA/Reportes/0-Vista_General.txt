@@ -1,0 +1,186 @@
+
+VISTA GENERAL DE CADA DATAFRAME
+
+
+Al visualizar los primeros elementos de cada dataframe destacan los siguientes problemas:
+
+- Problemas de normalización:
+	- No se presenta una normalización en los nombres de las columnas.
+	- Datos no normalizados, hay strings que refieren a una misma zona escritos de formas diferentes:
+		Ejemplo: Columna Provincia, Datos: Ciudad de Buenos Aires, C de Buenos Aires, BsAs, Bs.As., CABA, Buenos Aires.
+- Uno de los archivos presenta una columna que no brinda información.
+- Datos nulos o vacíos.
+- Error de sintaxis: datos de tipo flotante con separación por ",".
+
+
+Cliente
++---+-------------+--------------------+--------------------+--------+----+-------------------+------------+------------+-----+
+| ID|    Provincia|   Nombre_y_Apellido|           Domicilio|Telefono|Edad|          Localidad|           X|           Y|col10|
++---+-------------+--------------------+--------------------+--------+----+-------------------+------------+------------+-----+
+|  1|             |  HEBER JONI SANTANA|LAS HERAS Y BAT. ...| 42-5161|  58|         LOMA VERDE|-58,81850307|-34,30997088| null|
+|  2| Buenos Aires|         ANA SAPRIZA|PUEYRREDON Y DUPU...| 49-7578|  61|         SANTA ROSA|-58,73073751|-34,93908311| null|
+|  3|Buenos Aires |FERNANDO LUIS SAR...|CALDERON DE LA BA...| 49-3435|  15|             TORRES|-59,12794068|-34,43082199| null|
+|  4| Buenos Aires|    MANUELA SARASOLA|RUTA 36 KM 45,500...| 49-2883|  29|           RUTA SOL|-58,14393954|-34,92052706| null|
+|  5| Buenos Aires|  MARIO RAÚL SARASUA|492 Y 186 S/N  CO...|491-4608|  34|JOSE MELCHOR ROMERO|  -58,089381| -34,9444471| null|
+|  6| Buenos Aires| PEDRO JESUS SARAVIA|RUTA 2 - KM 44,50...| 49-2350|  18|           RUTA SOL|-58,11226426|-35,00786216| null|
+|  7| Buenos Aires|       JORGE SARAVIA|VILLARROEL RUTA 3...| 49-5306|  21|    VIRREY DEL PINO|-58,70894814|-34,86070786| null|
+|  8| Buenos Aires|CARLOS JOSE SARAZOLA|ISLA SANTIAGO S/N...|623-9935|  40|      ISLA SANTIAGO|-57,88154205| -34,8350313| null|
+|  9| Buenos Aires|    OSCAR LUIS SARLO|GARCILAZO DE LA V...| 49-7576|  18|         SANTA ROSA|-58,75008438|-34,97534955| null|
+| 10| Buenos Aires|JOSE ADOLFO SARMI...|SEGUNDO SOMBRA E/...| 49-7565|  58|         SANTA ROSA|-58,75203716|-34,95142843| null|
++---+-------------+--------------------+--------------------+--------+----+-------------------+------------+------------+-----+
+only showing top 10 rows
+
+TiposDeGasto
++-----------+------------------+----------------+
+|IdTipoGasto|       Descripcion|Monto_Aproximado|
++-----------+------------------+----------------+
+|          1|          Alquiler|            1000|
+|          2|         Servicios|             300|
+|          3|         Impuestos|             100|
+|          4|Sueldos y Jornales|            1000|
++-----------+------------------+----------------+
+
+Producto
++-----------+--------------------+-----------+--------+
+|ID_PRODUCTO|            Concepto|       Tipo| Precio |
++-----------+--------------------+-----------+--------+
+|      42737|EPSON COPYFAX 2000  |  IMPRESIÓN| 1658,00|
+|      42754|  MOT ASROCK H110...|INFORMATICA| 1237,50|
+|      42755|MOT ASROCK A58M-V...|INFORMATICA| 1079,32|
+|      42756|  MOT ECS KAM1-I AM1|INFORMATICA|  638,66|
+|      42757|MOT ASROCK B150M-...|INFORMATICA| 1784,42|
+|      42758|MOT ASROCK B85M S...|INFORMATICA| 1819,18|
+|      42759|MOT ASROCK FM2A88...|INFORMATICA| 1800,48|
+|      42760|MOT ASROCK N68-GS...|INFORMATICA| 1637,24|
+|      42761|MOT MSI A68HM-E33...|INFORMATICA| 1384,46|
+|      42762|MOT MSI B150M B15...|INFORMATICA| 2106,06|
++-----------+--------------------+-----------+--------+
+only showing top 10 rows
+
+Empleado
++-----------+---------+---------+--------+--------------+-------------------+--------+
+|ID_empleado| Apellido|   Nombre|Sucursal|        Sector|              Cargo| Salario|
++-----------+---------+---------+--------+--------------+-------------------+--------+
+|       1968|   Burgos| Jeronimo| Caseros|Administración|     Administrativo|32000,00|
+|       1674| Villegas|Estefania| Caseros|Administración|           Vendedor|32000,00|
+|       1516|Fernandez|Guillermo| Caseros|Administración|           Vendedor|45000,00|
+|       1330|  Ramirez|   Eliana| Caseros|Administración|           Vendedor|32000,00|
+|       1657|  Carmona|     Jose| Caseros|Administración|           Vendedor|32000,00|
+|       1573|De santis|  Marcela| Caseros|Administración|Aux. Administrativo|15000,00|
+|       1658|   Franco|  Daniela| Caseros|Administración|           Vendedor|32000,00|
+|       1078|   Cortes|   Rafael| Caseros|        Diseño|     Administrativo|42000,00|
+|       1695|   Berrio|   Camilo| Cabildo|        Diseño|           Vendedor|32000,00|
+|       1285|    Arias|Francisco| Cabildo|        Diseño|           Vendedor|32000,00|
++-----------+---------+---------+--------+--------------+-------------------+--------+
+only showing top 10 rows
+
+Compra
++--------+----------+----------+--------+------+-----------+
+|IdCompra|     Fecha|IdProducto|Cantidad|Precio|IdProveedor|
++--------+----------+----------+--------+------+-----------+
+|       1|2015-01-30|     42832|      13|560.51|         12|
+|       2|2015-01-30|     42833|      11|497.58|          7|
+|       3|2015-01-30|     42834|       1| 588.5|          6|
+|       4|2015-01-30|     42835|       9|567.66|         14|
+|       5|2015-01-30|     42839|      14|231.31|          2|
+|       6|2015-01-30|     42840|      14|232.07|         13|
+|       7|2015-01-30|     42841|       8|236.98|          4|
+|       8|2015-01-30|     42842|       4|255.33|          4|
+|       9|2015-01-30|     42845|       5|578.61|         12|
+|      10|2015-01-30|     42855|       1|809.04|          6|
++--------+----------+----------+--------+------+-----------+
+only showing top 10 rows
+
+Proveedor
++-----------+--------------------+--------------------+--------------------+------------+---------+----------+
+|IDProveedor|              Nombre|             Address|                City|       State|  Country|departamen|
++-----------+--------------------+--------------------+--------------------+------------+---------+----------+
+|          1|                null|     BEREGUESTEIN 36|          AVELLANEDA|BUENOS AIRES|ARGENTINA|AVELLANEDA|
+|          2|          San Cirano|         ALBERTI 965|    CORONEL BRANDSEN|BUENOS AIRES|ARGENTINA|  BRANDSEN|
+|          3|           Bell S.A.|          MORENO 331|             CAMPANA|BUENOS AIRES|ARGENTINA|   CAMPANA|
+|          4|      Rivero Insumos|     PTE. PERON 3872|     VALENTIN ALSINA|BUENOS AIRES|ARGENTINA|     LANUS|
+|          5| Laprida Computacion|AVDA. PEDRO PEREY...|             LAPRIDA|BUENOS AIRES|ARGENTINA|   LAPRIDA|
+|          6|Importadora Mann ...|   LOPE DE VEGA 2102|BOCA DE ATENCION ...|        CABA|ARGENTINA| COMUNA 10|
+|          7|  Fletes y Logistica|     SANTA ROSA 1564|             CORDOBA|     CORDOBA|ARGENTINA|   CAPITAL|
+|          8|                null|     SANTA ROSA 1564|             CORDOBA|     CORDOBA|ARGENTINA|   CAPITAL|
+|          9|Via Chile Containers|   JUAN B. JUSTO 415|             MENDOZA|     MENDOZA|ARGENTINA|   CAPITAL|
+|         10|          Full Toner|         CORDOBA 246|             MENDOZA|     MENDOZA|ARGENTINA|   CAPITAL|
++-----------+--------------------+--------------------+--------------------+------------+---------+----------+
+only showing top 10 rows
+
+Gasto
++-------+----------+-----------+----------+-------+
+|IdGasto|IdSucursal|IdTipoGasto|     Fecha|  Monto|
++-------+----------+-----------+----------+-------+
+|      1|        18|          1|2015-01-01| 1164.9|
+|      2|        18|          2|2015-01-01| 317.02|
+|      3|        18|          3|2015-01-01| 118.89|
+|      4|        18|          4|2015-01-01|1174.23|
+|      5|         1|          1|2015-01-01|1104.51|
+|      6|         1|          2|2015-01-01| 359.96|
+|      7|         1|          3|2015-01-01| 108.59|
+|      8|         1|          4|2015-01-01|1029.69|
+|      9|         2|          1|2015-01-01|1090.87|
+|     10|         2|          2|2015-01-01| 349.58|
++-------+----------+-----------+----------+-------+
+only showing top 10 rows
+
+Sucursal
++---+----------+--------------------+--------------------+--------------------+-----------+-----------+
+| ID|  Sucursal|           Direccion|           Localidad|           Provincia|    Latitud|   Longitud|
++---+----------+--------------------+--------------------+--------------------+-----------+-----------+
+|  1|   Cabildo|    Av. Cabildo 1342|Ciudad de Buenos ...|Ciudad de Buenos ...|-34,5678060|-58,4495720|
+|  2| Palermo 1|      Guatemala 5701|                CABA|                CABA|-34,5790350|-58,4335660|
+|  3| Palermo 2|Gral. Lucio Norbe...|                CABA|    C deBuenos Aires|-34,5959660|-58,4051500|
+|  4|Corrientes| Av. Corrientes 2352|Ciudad de Buenos ...|               Bs As|-34,6046850|-58,3987640|
+|  5|   Almagro|      Venezuela 3650|             Capital|             Bs.As. |-34,6173080|-58,4161790|
+|  6| Caballito|  Av. Rivadavia 4708|     Capital Federal|Ciudad de Buenos ...|-34,6163030|-58,4318490|
+|  7|    Flores|  Av. Rivadavia 5746|              CapFed|        Buenos Aires|-34,6228680|-58,4464490|
+|  8|   Alberdi|Av. Juan Bautista...|           Cap. Fed.|        Buenos Aires|-34,6273060|-58,4514980|
+|  9|  Deposito|       Pedernera 530|      Cap.   Federal|        Buenos Aires|-34,6351340|-58,4615130|
+| 10|     Velez|Av. Juan Bautista...|Cdad de Buenos Aires|Ciudad de Buenos ...|-34,6312570|-58,4980630|
++---+----------+--------------------+--------------------+--------------------+-----------+-----------+
+only showing top 10 rows
+
+CanalDeVenta
++------+-----------+
+|CODIGO|DESCRIPCION|
++------+-----------+
+|     1| Telefónica|
+|     2|     OnLine|
+|     3| Presencial|
++------+-----------+
+
+Venta
++-------+----------+-------------+-------+---------+----------+----------+----------+------+--------+
+|IdVenta|     Fecha|Fecha_Entrega|IdCanal|IdCliente|IdSucursal|IdEmpleado|IdProducto|Precio|Cantidad|
++-------+----------+-------------+-------+---------+----------+----------+----------+------+--------+
+|      1|2018-03-09|   2018-03-17|      3|      969|        13|      1674|     42817|813.12|       2|
+|      2|2018-12-28|   2018-12-29|      2|      884|        13|      1674|     42795|543.18|       3|
+|      3|2016-03-28|   2016-03-31|      2|     1722|        13|      1674|     42837|430.32|       1|
+|      4|2017-10-23|   2017-10-24|      3|     2876|        13|      1674|     42834|818.84|       2|
+|      5|2017-11-22|   2017-11-25|      2|      678|        13|      1674|     42825|554.18|       3|
+|      6|2018-01-24|   2018-01-25|      2|     3263|        13|      1674|     42852|   152|       1|
+|      7|2015-03-25|   2015-03-26|      3|     2983|        13|      1674|     42939|  2915|       1|
+|      8|2017-07-10|   2017-07-18|      2|      201|        13|      1674|     42940|  2162|       2|
+|      9|2018-04-03|   2018-04-06|      2|     1006|        13|      1674|     42905|   456|       3|
+|     10|2019-03-16|   2019-03-17|      1|     1003|        13|      1674|     42894|   515|       2|
++-------+----------+-------------+-------+---------+----------+----------+----------+------+--------+
+only showing top 10 rows
+
+Calendario
++--------+----------+----+---+---+---------+------+----------+----------+
+| IdFecha|     fecha|anio|mes|dia|trimestre|semana|dia_nombre|mes_nombre|
++--------+----------+----+---+---+---------+------+----------+----------+
+|20150101|2015-01-01|2015|  1|  1|        1|     1|  Thursday|   January|
+|20150102|2015-01-02|2015|  1|  2|        1|     1|    Friday|   January|
+|20150103|2015-01-03|2015|  1|  3|        1|     1|  Saturday|   January|
+|20150104|2015-01-04|2015|  1|  4|        1|     1|    Sunday|   January|
+|20150105|2015-01-05|2015|  1|  5|        1|     2|    Monday|   January|
+|20150106|2015-01-06|2015|  1|  6|        1|     2|   Tuesday|   January|
+|20150107|2015-01-07|2015|  1|  7|        1|     2| Wednesday|   January|
+|20150108|2015-01-08|2015|  1|  8|        1|     2|  Thursday|   January|
+|20150109|2015-01-09|2015|  1|  9|        1|     2|    Friday|   January|
+|20150110|2015-01-10|2015|  1| 10|        1|     2|  Saturday|   January|
++--------+----------+----+---+---+---------+------+----------+----------+
+only showing top 10 rows

@@ -1,0 +1,730 @@
+
+DETECCIÓN DE DATOS A NORMALIZAR
+
+
+Trabaje solo con las columnas: ["Provincia", "Localidad", "City", "State", "Country", "departamen"]
+
+
+Para detectar lo elementos a normalizar busqué los elementos únicos por columna y los ordené alfabéticamente,
+ya que de esa manera los elementos similares se pueden visualizar fácilmente.
+
+
+	- Detecciones:
+
+		DF: Cliente, COL: Provincia => ["Buenos Aires ", " Buenos Aires", "Buenos Aires", "Ciudad de Buenos Aires"]
+
+		DF: Proveedor, COL: State => ["BUENOS AIRES", "CABA"]
+
+		DF: Sucursal, COL: Localidad => ["CABA", "Cap.   Federal", "Cap. Fed." ,"CapFed" ,"Capital", "Capital Federal",
+ 						 "Cdad de Buenos Aires", "Ciudad de Buenos Aires"]
+
+		DF: Sucursal, COL: Localidad => ["Cordoba", "Coroba", "Córdoba"]
+		
+		DF: Sucursal, COL: Provincia => ["B. Aires", "B.Aires", "Bs As", "Bs.As. ", "Buenos Aires", "C deBuenos Aires",
+						 "CABA", "Ciudad de Buenos Aires", "Pcia Bs AS", "Prov de Bs As.", "Provincia de Buenos Aires"]
+		
+		DF: Sucursal, COL: Localidad => ["Cordoba", "Córdoba"]
+
+		
+DF: Cliente, COL: Provincia => elementos únicos: 12
++----------------------+
+|Provincia             |
++----------------------+
+|null                  |
+|                      |
+| Buenos Aires         |
+|Buenos Aires          |
+|Buenos Aires          |
+|Ciudad de Buenos Aires|
+|Córdoba               |
+|Entre Ríos            |
+|Mendoza               |
+|Neuquén               |
+|Santa Fe              |
+|Tucumán               |
++----------------------+
+
+DF: Cliente, COL: Localidad => elementos únicos: 570
++---------------------------------------------------+
+|Localidad                                          |
++---------------------------------------------------+
+|null                                               |
+|11 DE SEPTIEMBRE                                   |
+|2º SECCION DE ISLAS                                |
+|3º SECCION DE ISLAS                                |
+|9 DE ABRIL                                         |
+|ABASTO                                             |
+|ACASSUSO                                           |
+|ACCESO A GOBERNADOR ANDONAEGUI                     |
+|ADROGUE                                            |
+|AGRELO                                             |
+|AGUA DE ORO                                        |
+|ALAMBRADO DE FIERRO                                |
+|ALASTUEY                                           |
+|ALDAO                                              |
+|ALDERETES - INCLUYE EL CORTE Y LOS GUTIERREZ       |
+|ALDO BONZI                                         |
+|ALEJANDRO KORN                                     |
+|ALEJANDRO PETION                                   |
+|ALGARROBAL (LAS HERAS)                             |
+|ALTA GRACIA                                        |
+|ALTO SALVADOR                                      |
+|ALVEAR                                             |
+|ANGEL ETCHEVERRY                                   |
+|ARANA                                              |
+|ARROYO DE LA CRUZ                                  |
+|ARROYO PIAGGIO                                     |
+|ARROYO SECO                                        |
+|ARSENAL MIGUEL DE AZCUENAGA                        |
+|ARTURO SEGUI                                       |
+|ATREUCO (RAI)                                      |
+|ATREUCO ARRIBA                                     |
+|AUCAPAN (RAI)                                      |
+|AUCAPAN ABAJO                                      |
+|AVELLANEDA                                         |
+|BAJO GRANDE                                        |
+|BANDA DEL RIO SALI - INCLUYE LASTENIA              |
+|BANDFIELD                                          |
+|BARRANCAS                                          |
+|BARRIO BANCO PROVINCIA                             |
+|BARRIO BELGRANO                                    |
+|BARRIO EL CARMEN                                   |
+|BARRIO EL TALADRO                                  |
+|BARRIO GAMBIER                                     |
+|BARRIO GRANADEROS                                  |
+|BARRIO LAS QUINTAS                                 |
+|BARRIO LOS PIONEROS                                |
+|BARRIO LOS POCITOS (LAS TALITAS)                   |
+|BARRIO PARQUE GENERAL SAN MARTIN                   |
+|BARRIO PARQUE LAS ACACIAS                          |
+|BARRIO SAAVEDRA                                    |
+|BARRIO SANTA ROSA                                  |
+|BECCAR                                             |
+|BELEN DE ESCOBAR                                   |
+|BELLA VISTA                                        |
+|BENAVIDEZ                                          |
+|BERAZATEGUI                                        |
+|BERAZATEGUI OESTE                                  |
+|BERISSO                                            |
+|BERMEJO: BARRIOS SANTAROSA Y JARDIN EL SAUCE (GUAYM|
+|BERNAL                                             |
+|BERNAL OESTE                                       |
+|BILLINGHURST                                       |
+|BLONDEAU                                           |
+|BOCA DEL TIGRE                                     |
+|BOSQUES                                            |
+|BOULOGNE SUR MER                                   |
+|BOUWER                                             |
+|BUCHANAN                                           |
+|BUENA NUEVA (GUAYMALLEN)                           |
+|BURZACO                                            |
+|CAMPANA                                            |
+|CAMPO ARECHAVAL                                    |
+|CAMPO DE MAYO                                      |
+|CANAL ALEM AL GUAZU                                |
+|CANNING                                            |
+|CANTERAS EL SAUCE                                  |
+|CAPILLA DEL ROSARIO (GUAYMALLEN)                   |
+|CAPILLA DEL SEÑOR                                  |
+|CAPITAN BERMUDEZ                                   |
+|CARAPACHAY                                         |
+|CARBON POZO                                        |
+|CARLOS KEEN                                        |
+|CARLOS LEMEE                                       |
+|CARLOS SPEGAZZIN                                   |
+|CARLOS TOMAS SOURIGUES                             |
+|CARRODILLA (LUJAN DE CUYO)                         |
+|CASEROS                                            |
+|CASEROS CENTRO                                     |
+|CASEROS ESTE                                       |
+|CASTELAR                                           |
+|CAÑADA DE ALZOGARAY                                |
+|CAÑADA DE ROCA                                     |
+|CAÑADA DE YERBA BUENA                              |
+|CAÑUELAS                                           |
+|CENTRO UNIVERSITARIO HORCO MOLLE                   |
+|CEVIL POZO                                         |
+|CEVIL REDONDO                                      |
+|CHACRAS DE CORIA - INCLUYE EST. PASO DE LOS ANDES  |
+|CHAPANAY                                           |
+|CHARIGÊE                                           |
+|CHIQUILIHUIN (RAI)                                 |
+|CHURRUCA                                           |
+|CIENAGUITA (LAS HERAS)                             |
+|CITY BELL                                          |
+|CIUDAD DE BUENOS AIRES                             |
+|CIUDAD EVITA                                       |
+|CIUDAD JARDIN DEL LIBERTADOR                       |
+|CIUDAD JARDIN LOMAS DEL PALOMAR                    |
+|CIUDAD VILLA BALLESTER                             |
+|CIUDAD VILLA SANTOS TESEI                          |
+|CIUDADELA                                          |
+|CLAYPOLE                                           |
+|COLOMBRES INCLUYE EX INGENIO CRUZ ALTA             |
+|COLONIA BOMBAL                                     |
+|COLONIA IRIGOYEN                                   |
+|COLONIA JARA                                       |
+|COLONIA LA CAPILLA                                 |
+|COLONIA LOS ALGARROBOS                             |
+|COLONIA SEGOVIA                                    |
+|COLONIA TIROLESA                                   |
+|COLONIAS 1 A 11-LUISIANA                           |
+|CONFLUENCIA DEL MALLEO                             |
+|COQUIMBITO (MAIPU)                                 |
+|CORDOBA                                            |
+|CORONEL BRANDSEN                                   |
+|CORTINES                                           |
+|COSTA DEL CATAN LIL                                |
+|COSTA DEL MALLEO                                   |
+|CRUCESITA                                          |
+|CUARTEL II                                         |
+|CUARTEL IV                                         |
+|CUARTEL V                                          |
+|CURVA DE LOS VEGAS                                 |
+|DE ARIAS                                           |
+|DEL VISO                                           |
+|DIEGO GAYNOR                                       |
+|DIQUE 1                                            |
+|DIQUE LUJAN                                        |
+|DOCK SUD                                           |
+|DOMSELAAR                                          |
+|DON BOSCO                                          |
+|DON ORIONE                                         |
+|DON TORCUATO                                       |
+|DON TORCUATO OESTE                                 |
+|DORREGO (GUAYMALLEN)                               |
+|DUMESNIL                                           |
+|EL BORBOLLON (LAS HERAS)                           |
+|EL CADILLAL                                        |
+|EL CARMELO                                         |
+|EL CAZADOR                                         |
+|EL CEVILAR                                         |
+|EL CHAJA                                           |
+|EL CHALLAO (LAS HERAS)                             |
+|EL CHAÑAR                                          |
+|EL CHICAL                                          |
+|EL COLMENAR (VILLA MARIANO MORENO)                 |
+|EL CORTE                                           |
+|EL DIQUECITO                                       |
+|EL DURAZNITO/DURAZNITO                             |
+|EL GATEADO                                         |
+|EL JAGÜEL                                          |
+|EL LIBERTADOR                                      |
+|EL MANANTIAL                                       |
+|EL MANZANO                                         |
+|EL MARTILLO                                        |
+|EL MOREJON                                         |
+|EL OMBU                                            |
+|EL PALOMAR                                         |
+|EL PARAISO                                         |
+|EL PASTAL                                          |
+|EL PATO                                            |
+|EL PESCADO                                         |
+|EL PLUMERILLO (LAS HERAS)                          |
+|EL PORVENIR                                        |
+|EL QUEBRACHAL                                      |
+|EL RESGUARDO (LAS HERAS)                           |
+|EL SALITRAL                                        |
+|EL SAUCE (GUAYMALLEN)                              |
+|EL TALAR                                           |
+|EL TATU                                            |
+|EL TROPEZON                                        |
+|EL VERGEL                                          |
+|EL ZAPALLAR (LAS HERAS)                            |
+|ENSENADA                                           |
+|ESCALADA                                           |
+|ESPERANZA - INCLUYE DELFIN GALLO Y EX INGENIOS ESP |
+|EST. TEJEDA                                        |
+|ESTACION COLONIA TIROLESA                          |
+|ESTACION CRUZ DEL NORTE                            |
+|ESTACION EL GAUCHO                                 |
+|ESTACION LA LATA                                   |
+|ESTANCIA LA PRIMAVERA                              |
+|ESTANCIA SANTA LUCIA                               |
+|ESTANISLAO SEVERO ZEBALLOS                         |
+|ETCHEGOYEN                                         |
+|EX INGENIO LULES                                   |
+|EX INGENIO MERCEDES                                |
+|EZPELETA                                           |
+|EZPELETA OESTE                                     |
+|FATIMA                                             |
+|FLORENCIO VARELA                                   |
+|FLORIDA                                            |
+|FLORIDA OESTE                                      |
+|FRANCISCO ALVAREZ                                  |
+|FRAY LUIS BELTRAN                                  |
+|FUNES                                              |
+|GARIN                                              |
+|GENERAL BELGRANO (GUAYMALLEN)                      |
+|GENERAL GUTIERREZ (MAIPU)                          |
+|GENERAL LAGOS                                      |
+|GENERAL ORTEGA                                     |
+|GENERAL PACHECO                                    |
+|GENERAL PAZ                                        |
+|GENERAL RODRIGUEZ                                  |
+|GENERAL SAN MARTIN                                 |
+|GERLI                                              |
+|GLEW                                               |
+|GOBERNADOR ANDONAEGUI                              |
+|GOBERNADOR BENEGAS (GODOY CRUZ)                    |
+|GOBERNADOR JULIO A COSTA                           |
+|GODOY CRUZ                                         |
+|GOMEZ                                              |
+|GOMEZ DE LA VEGA                                   |
+|GONNET                                             |
+|GONZALEZ CATAN                                     |
+|GRANADERO BAIGORRIA                                |
+|GRAND BOURG                                        |
+|GREGORIO DE LAFERRERE                              |
+|GUERNICA                                           |
+|GUILLERMO E HUDSON                                 |
+|HAEDO                                              |
+|HORNOS                                             |
+|HOSPITAL SOMMER                                    |
+|HURLINGHAM                                         |
+|IBARLUCEA                                          |
+|IGNACIO CORREAS                                    |
+|INGENIERO ADOLFO SOURDEAUX                         |
+|INGENIERO JUAN ALLAN                               |
+|INGENIERO MASCHWITZ                                |
+|INGENIO SAN PABLO                                  |
+|ISIDRO CASANOVA                                    |
+|ISLA CHICA                                         |
+|ISLA EL ESPINILLO                                  |
+|ISLA GRANDE                                        |
+|ISLA MARTIN GARCIA                                 |
+|ISLA SANTIAGO                                      |
+|ISLA TALAVERA                                      |
+|ISLAS                                              |
+|ITUZAINGO                                          |
+|ITUZAINGO SUR                                      |
+|JARDIN ARENALES                                    |
+|JESUS NAZARENO (GUAYMALLEN)                        |
+|JOAQUIN GORINA                                     |
+|JOSE C PAZ                                         |
+|JOSE HERNANDEZ                                     |
+|JOSE INGENIEROS                                    |
+|JOSE LEON SUAREZ                                   |
+|JOSE MARIA EZEIZA                                  |
+|JOSE MARMOL                                        |
+|JOSE MELCHOR ROMERO                                |
+|JUAN MARIA GUTIERREZ                               |
+|JUAREZ CELMAN                                      |
+|JUNIN DE LOS ANDES                                 |
+|KILOMETRO 11 (GUAYMALLEN)                          |
+|KILOMETRO 15                                       |
+|KILOMETRO 287                                      |
+|L DEL MIRADOR                                      |
+|LA AGUADITA                                        |
+|LA ARABIA                                          |
+|LA ARCADIA                                         |
+|LA BOLSA                                           |
+|LA CALERA                                          |
+|LA CAROLINA                                        |
+|LA CHOZA                                           |
+|LA COLONIA                                         |
+|LA COLORADA                                        |
+|LA CORINA                                          |
+|LA CUMBRE                                          |
+|LA ESTANCITA                                       |
+|LA FLORIDA - INCLUYE ESTACION PEDRO G. MENDEZ      |
+|LA GRANJA                                          |
+|LA HERMOSURA                                       |
+|LA INVERNADA                                       |
+|LA LATA                                            |
+|LA LEONOR                                          |
+|LA LONJA                                           |
+|LA LUCILA                                          |
+|LA MESADA                                          |
+|LA PARADA                                          |
+|LA PEGA                                            |
+|LA PEPITA                                          |
+|LA PESQUERIA                                       |
+|LA PICADA                                          |
+|LA PLATA                                           |
+|LA PRIMAVERA                                       |
+|LA PUNTILLA (LUJAN DE CUYO)                        |
+|LA REJA                                            |
+|LA RINCONADA                                       |
+|LA TABLADA                                         |
+|LA TAPIE                                           |
+|LA UNION                                           |
+|LAGO HERMOSO                                       |
+|LAGO LOLOG                                         |
+|LANUS ESTE                                         |
+|LANUS OESTE                                        |
+|LAS CAÑAS                                          |
+|LAS CAÑAS (GUAYMALLEN)                             |
+|LAS COMPUERTAS                                     |
+|LAS CORZUELAS                                      |
+|LAS CUATRO ESQUINAS                                |
+|LAS HERAS                                          |
+|LAS PALMAS                                         |
+|LAS PALMITAS                                       |
+|LAS PIEDRITAS                                      |
+|LAS SALINAS                                        |
+|LAS TALITAS                                        |
+|LAS TORTUGAS (GODOY CRUZ)                          |
+|LAS VIOLETAS                                       |
+|LEZICA Y TORREZURI                                 |
+|LIBERTAD                                           |
+|LIMA                                               |
+|LISANDRO OLMOS                                     |
+|LLAVALLOL                                          |
+|LOMA HERMOSA                                       |
+|LOMA VERDE                                         |
+|LOMAS DE ZAMORA                                    |
+|LONGCHAMPS                                         |
+|LOS AGUIRRE                                        |
+|LOS ALAMOS                                         |
+|LOS BARRIALES                                      |
+|LOS CACHORROS                                      |
+|LOS CARDALES                                       |
+|LOS CEDROS                                         |
+|LOS HORNOS                                         |
+|LOS MANUELES                                       |
+|LOS MERINOS                                        |
+|LOS NOGALES                                        |
+|LOS POCITOS                                        |
+|LOS POLVORINES                                     |
+|LOS PORCELES                                       |
+|LOS TRONCOS DEL TALAR                              |
+|LOS VILLAGRAS                                      |
+|LUIS GUILLON                                       |
+|LUIS PALACIOS                                      |
+|LUJAN                                              |
+|LUJAN DE CUYO                                      |
+|LUNLUNTA                                           |
+|LUZURIAGA (MAIPU)                                  |
+|MAIPU                                              |
+|MALAGAMBA                                          |
+|MALAGUEÑO                                          |
+|MALVINAS ARGENTINAS                                |
+|MANZANARES                                         |
+|MAQUINISTA F SAVIO                                 |
+|MAQUINISTA SAVIO                                   |
+|MARCOS PAZ                                         |
+|MARIANO ACOSTA                                     |
+|MARIANO MORENO                                     |
+|MARRE                                              |
+|MARTIN CORONADO                                    |
+|MARTINEZ                                           |
+|MATHEU                                             |
+|MAXIMO PAZ                                         |
+|MAYOR DRUMMOND (LUJAN DE CUYO)                     |
+|MENDIOLAZA                                         |
+|MENDOZA                                            |
+|MERLO                                              |
+|MI GRANJA                                          |
+|MINISTRO RIVADAVIA                                 |
+|MONTE CHINGOLO                                     |
+|MONTE FLORES                                       |
+|MONTE GRANDE                                       |
+|MONTECASEROS                                       |
+|MONTECRISTO                                        |
+|MORON                                              |
+|MUNRO                                              |
+|MUÑIZ                                              |
+|NAHUEL MAPE ARRIBA                                 |
+|NAHUEL MAPI ABAJO                                  |
+|NUEVA CIUDAD (GUAYMALLEN)                          |
+|NUEVA ESPERANZA                                    |
+|OHUANTA                                            |
+|OLIVOS                                             |
+|OPEN DOOR                                          |
+|PABLO NOGUES                                       |
+|PACARA PINTADO                                     |
+|PAIMUN                                             |
+|PAJAS BLANCAS                                      |
+|PALMIRA                                            |
+|PAMPA DEL MALLEO                                   |
+|PANQUEHUA (LAS HERAS)                              |
+|PARADA ORLANDO                                     |
+|PARQUE SAN LORENZO                                 |
+|PASO DEL REY                                       |
+|PAVON                                              |
+|PEDREGAL                                           |
+|PEDRO MOLINA (GUAYMALLEN)                          |
+|PERDRIEL                                           |
+|PEREZ                                              |
+|PILAR                                              |
+|PILOLIL                                            |
+|PIÑEYRO                                            |
+|PLATANOS                                           |
+|POBLET                                             |
+|PONTEVEDRA                                         |
+|POTRERO DEL ESTADO                                 |
+|POZO DEL ALTO                                      |
+|POZO DEL TIGRE                                     |
+|PRESIDENTE DERQUI                                  |
+|PRESIDENTE SARMIENTO (GODOY CRUZ)                  |
+|PRIMERA SECCION DE ISLAS                           |
+|PUEBLO ANDINO                                      |
+|PUENTE BLANCO                                      |
+|PUENTE DE HIERRO                                   |
+|PUENTE EL MANANTIAL                                |
+|PUERTO GENERAL SAN MARTIN                          |
+|PUNTA DEL MONTE                                    |
+|PUNTA LARA                                         |
+|QUILA-QUINA                                        |
+|QUILMES                                            |
+|QUILMES OESTE                                      |
+|RAFAEL CALZADA                                     |
+|RAFAEL CASTILLO                                    |
+|RAMOS MEJIA                                        |
+|RANELAGH                                           |
+|REMEDIOS DE ESCALADA                               |
+|REMEDIOS DE ESCALADA DE SAN MARTIN                 |
+|RESERVA CINTURON ECOLOGICO                         |
+|RICARDO ROJAS                                      |
+|RICARDONE                                          |
+|RINCON DE MILBERG                                  |
+|RIO CEBALLOS                                       |
+|RIO LUJAN                                          |
+|RODEO DE LA CRUZ (GUAYMALLEN)                      |
+|RODEO DEL MEDIO                                    |
+|ROLDAN                                             |
+|ROSARIO                                            |
+|RUSSELL                                            |
+|RUTA 193 KM 28,5                                   |
+|RUTA 9 KM 103                                      |
+|RUTA SOL                                           |
+|SAENZ PEÑA                                         |
+|SALDAN                                             |
+|SALSIPUEDES                                        |
+|SAMBOROMBON                                        |
+|SAN ANDRES                                         |
+|SAN ANTONIO DE PADUA                               |
+|SAN FERNANDO                                       |
+|SAN FRANCISCO DEL MONTE (GODOY CRUZ)               |
+|SAN FRANCISCO DEL MONTE (GUAYMALLEN)               |
+|SAN FRANCISCO SOLANO                               |
+|SAN IGNACIO                                        |
+|SAN ISIDRO                                         |
+|SAN JAVIER                                         |
+|SAN JOSE                                           |
+|SAN JOSE (GUAYMALLEN)                              |
+|SAN JUSTO                                          |
+|SAN LORENZO                                        |
+|SAN MARTIN                                         |
+|SAN MARTIN DE LOS ANDES                            |
+|SAN MIGUEL                                         |
+|SAN MIGUEL DE TUCUMAN                              |
+|SAN ROQUE                                          |
+|SAN VICENTE                                        |
+|SANTA BLANCA                                       |
+|SANTA ELENA                                        |
+|SANTA ROSA                                         |
+|SANTA TERESA                                       |
+|SANTOS LUGARES                                     |
+|SARANDI                                            |
+|SOCAVONES                                          |
+|SOLDINI                                            |
+|SOLIS                                              |
+|SUCRE                                              |
+|TAFI VIEJO                                         |
+|TAPIA/TAPIAS                                       |
+|TAPIALES                                           |
+|TAQUELLO                                           |
+|TEMPERLEY                                          |
+|TERCERA SECCION DE ISLAS                           |
+|TIGRE                                              |
+|TIMBO NUEVO                                        |
+|TIMBO VIEJO                                        |
+|TIMBUES                                            |
+|TOLEDO                                             |
+|TOLOSA                                             |
+|TORRES                                             |
+|TORTUGUITAS                                        |
+|TRES ESQUINAS                                      |
+|TRISTAN SUAREZ                                     |
+|TROMPUL (RAI)                                      |
+|TRUJUI                                             |
+|TURDERA                                            |
+|UNQUILLO                                           |
+|VALENTIN ALSINA                                    |
+|VICENTE A.ECHEVERRIA                               |
+|VICENTE CASARES                                    |
+|VICENTE LOPEZ                                      |
+|VICTORIA                                           |
+|VILLA ADELINA                                      |
+|VILLA ALLENDE                                      |
+|VILLA AMELIA                                       |
+|VILLA ARGUELLO                                     |
+|VILLA ASTOLFI                                      |
+|VILLA BERNARDO MONTEAGUDO                          |
+|VILLA BOSCH                                        |
+|VILLA BROWN                                        |
+|VILLA CARMELA                                      |
+|VILLA CATELLA                                      |
+|VILLA CENTENARIO                                   |
+|VILLA CHACABUCO                                    |
+|VILLA CORAZON DE MARIA                             |
+|VILLA CORONEL JOSE M. ZAPIOLA                      |
+|VILLA DE MAYO                                      |
+|VILLA DOMINICO                                     |
+|VILLA ELISA                                        |
+|VILLA ELVIRA                                       |
+|VILLA ESPAÑA                                       |
+|VILLA FIORITO                                      |
+|VILLA FLANDRIA NORTE                               |
+|VILLA FLANDRIA SUR                                 |
+|VILLA GENERAL EUGENIO NECOCHEA                     |
+|VILLA GENERAL TOMAS GUIDO                          |
+|VILLA GOBERNADOR GALVEZ                            |
+|VILLA GOBERNADOR UDAONDO                           |
+|VILLA GODOY CRUZ                                   |
+|VILLA GRANADEROS DE SAN MARTIN                     |
+|VILLA GREGORIA MATORRAS                            |
+|VILLA JUAN G. LAS HERAS                            |
+|VILLA JUAN MARTIN DE PUEYRREDON                    |
+|VILLA LA FLORIDA                                   |
+|VILLA LA RIVERA                                    |
+|VILLA LIBERTAD                                     |
+|VILLA LOS CORRALITOS                               |
+|VILLA LOS LLANOS                                   |
+|VILLA LUZURIAGA                                    |
+|VILLA MADERO                                       |
+|VILLA MAIPU                                        |
+|VILLA MARIANO MORENO                               |
+|VILLA MARQUES DE AGUADO                            |
+|VILLA MARTELLI                                     |
+|VILLA MONTORO                                      |
+|VILLA NOUGUES                                      |
+|VILLA NUEVA                                        |
+|VILLA NUEVA (GUAYMALLEN)                           |
+|VILLA OBRERA                                       |
+|VILLA PORTEÑA                                      |
+|VILLA PROGRESO                                     |
+|VILLA RAFFO                                        |
+|VILLA ROSA                                         |
+|VILLA RUIZ                                         |
+|VILLA SAN CARLOS                                   |
+|VILLA SAN LUIS                                     |
+|VILLA SANTA ROSA                                   |
+|VILLA SARMIENTO                                    |
+|VILLA SECA                                         |
+|VILLA TULUMAYA                                     |
+|VILLA VATTEONE                                     |
+|VILLA VISSIR                                       |
+|VILLA ZULA                                         |
+|VILLARS                                            |
+|VIRREY DEL PINO                                    |
+|VIRREYES                                           |
+|VISTALBA (LUJAN DE CUYO)                           |
+|WILDE                                              |
+|WILLIAM C MORRIS                                   |
+|YERBA BUENA - MARCOS PAZ                           |
+|ZARATE                                             |
+|ZELAYA                                             |
+|ZONA AEROPUERTO INTERNACIONAL EZEIZA               |
++---------------------------------------------------+
+
+DF: Proveedor, COL: City => elementos únicos: 12
++-----------------------------+
+|City                         |
++-----------------------------+
+|AVELLANEDA                   |
+|BOCA DE ATENCION MONTE CASTRO|
+|CAMPANA                      |
+|CORDOBA                      |
+|CORONEL BRANDSEN             |
+|LAPRIDA                      |
+|MENDOZA                      |
+|MONTEROS                     |
+|ROSARIO                      |
+|SAN CARLOS DE BARILOCHE      |
+|SAN MIGUEL DE TUCUMAN        |
+|VALENTIN ALSINA              |
++-----------------------------+
+
+DF: Proveedor, COL: State => elementos únicos: 7
++------------+
+|State       |
++------------+
+|BUENOS AIRES|
+|CABA        |
+|CORDOBA     |
+|MENDOZA     |
+|RIO NEGRO   |
+|SANTA FE    |
+|TUCUMAN     |
++------------+
+
+DF: Proveedor, COL: Country => elementos únicos: 1
++---------+
+|Country  |
++---------+
+|ARGENTINA|
++---------+
+
+DF: Proveedor, COL: departamen => elementos únicos: 10
++----------+
+|departamen|
++----------+
+|AVELLANEDA|
+|BARILOCHE |
+|BRANDSEN  |
+|CAMPANA   |
+|CAPITAL   |
+|COMUNA 10 |
+|LANUS     |
+|LAPRIDA   |
+|MONTEROS  |
+|ROSARIO   |
++----------+
+
+DF: Sucursal, COL: Localidad => elementos únicos: 26
++-----------------------+
+|Localidad              |
++-----------------------+
+|Avellaneda             |
+|CABA                   |
+|Cap.   Federal         |
+|Cap. Fed.              |
+|CapFed                 |
+|Capital                |
+|Capital Federal        |
+|Caseros                |
+|Castelar               |
+|Cdad de Buenos Aires   |
+|Ciudad de Buenos Aires |
+|Cordoba                |
+|Coroba                 |
+|Córdoba                |
+|La Plata               |
+|Lanus                  |
+|Mar del Plata          |
+|Martínez               |
+|Mendoza                |
+|Moron                  |
+|Quilmes                |
+|Rosario                |
+|San Carlos de Bariloche|
+|San Justo              |
+|San Miguel de Tucumán  |
+|Vicente López          |
++-----------------------+
+
+DF: Sucursal, COL: Provincia => elementos únicos: 17
++-------------------------+
+|Provincia                |
++-------------------------+
+|B. Aires                 |
+|B.Aires                  |
+|Bs As                    |
+|Bs.As.                   |
+|Buenos Aires             |
+|C deBuenos Aires         |
+|CABA                     |
+|Ciudad de Buenos Aires   |
+|Cordoba                  |
+|Córdoba                  |
+|Mendoza                  |
+|Pcia Bs AS               |
+|Prov de Bs As.           |
+|Provincia de Buenos Aires|
+|Río Negro                |
+|Santa Fe                 |
+|Tucumán                  |
++-------------------------+

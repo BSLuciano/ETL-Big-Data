@@ -1,0 +1,135 @@
+version: '3'
+
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    volumes:
+      - namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop-hive.env
+    ports:
+      - "50070:50070"
+    container_name: namenode
+    
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    volumes:
+      - datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
+    ports:
+      - "50075:50075"
+    container_name: datanode
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
+    env_file:
+      - ./hadoop-hive.env
+    container_name: resourcemanager
+
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - "10000:10000"
+    volumes:
+      - hql:/opt/hql
+    container_name: hive-server
+
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432 resourcemanager:8088"
+    ports:
+      - "9083:9083"
+    container_name: hive-metastore
+
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    ports:
+      - "5432:5432"
+    container_name: hive-metastore-postgresql
+
+  huedb:
+    image: postgres:12.1-alpine
+    volumes:
+      - pg_data:/var/lib/postgresl/data/
+    ports:
+      - "5432"
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432 resourcemanager:8088 hive-metastore:9083"
+    container_name: huedb
+
+  hue:
+    image: gethue/hue:4.6.0
+    environment:
+        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432 resourcemanager:8088 hive-metastore:9083 huedb:5000"
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./hue-overrides.ini:/usr/share/hue/desktop/conf/hue-overrides.ini
+    links:
+      - huedb
+    container_name: hue
+
+  spark:
+    container_name: spark-master
+    image: bitnami/spark:3.2.1-debian-10-r34
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - spark_logs:/opt/bitnami/spark/logs
+      - scripts:/opt/bitnami/spark/scripts
+
+  worker-1:
+    container_name: spark-worker-1
+    image: bitnami/spark:3.2.1-debian-10-r34
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=512m
+      - SPARK_WORKER_MASTER_URL=spark://spark:7077
+    depends_on:
+      - spark
+    volumes:
+      - spark_logs:/opt/bitnami/spark/logs
+
+  worker-2:
+    container_name: spark-worker-2
+    image: bitnami/spark:3.2.1-debian-10-r34
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=512m
+      - SPARK_WORKER_MASTER_URL=spark://spark:7077
+    depends_on:
+      - spark
+    volumes:
+      - spark_logs:/opt/bitnami/spark/logs
+
+volumes:
+  namenode:
+  datanode:
+  pg_data:
+  spark_logs:
+  scripts:
+  hql:
