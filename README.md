@@ -32,41 +32,41 @@ Los datos utilizados son de una tienda de artículos tecnológicos.
 		hdfs ------- /raw_data
 			|	|
 			|	|-- /csv_data ----- calendario
-			|	|				|-- canaldeventa
-			|	|				|-- cliente
-			|	|				|-- compra
-			|	|				|-- empleado
-			|	|				|-- gasto
-			|	|				|-- producto
-			|	|				|-- proveedor
-         	|	|				|-- sucursal
-			|	|				|-- tipodegasto
-			|	|				|-- venta
+			|	|		|-- canaldeventa
+			|	|		|-- cliente
+			|	|		|-- compra
+			|	|		|-- empleado
+			|	|		|-- gasto
+			|	|		|-- producto
+			|	|		|-- proveedor
+         		|	|		|-- sucursal
+			|	|		|-- tipodegasto
+			|	|		|-- venta
 			|	|
 			|	|-- /parquet_data ----- Calendario
-			|			    		|-- CanalDeVenta
-			|			    		|-- Cliente
-			|			    		|-- Compra
-			|			    		|-- Empleado
-			|			    		|-- Gasto
-			|			    		|-- Producto
-			|			    		|-- Proveedor
-           	|			    		|-- Sucursal
-			|	            		|-- TipoDeGasto
-			|			    		|-- Venta
+			|			    |-- CanalDeVenta
+			|			    |-- Cliente
+			|			    |-- Compra
+			|			    |-- Empleado
+			|			    |-- Gasto
+			|			    |-- Producto
+			|			    |-- Proveedor
+           	        |			    |-- Sucursal
+			|	            	    |-- TipoDeGasto
+			|			    |-- Venta
 			|
 			|
 			|--- /transformed_data ----- Calendario
-						 			 |-- CanalDeVenta
-						 			 |-- Cliente
-						 			 |-- Compra
-						 			 |-- Empleado
-						 			 |-- Gasto
-						 			 |-- Producto
-						 			 |-- Proveedor
-           				 			 |-- Sucursal
-				         			 |-- TipoDeGasto
-				         			 |-- Venta	
+						 |-- CanalDeVenta
+						 |-- Cliente
+						 |-- Compra
+						 |-- Empleado
+						 |-- Gasto
+						 |-- Producto
+						 |-- Proveedor
+					 	 |-- Sucursal
+						 |-- TipoDeGasto
+						 |-- Venta	
 
 
 
