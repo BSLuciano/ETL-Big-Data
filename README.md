@@ -134,7 +134,7 @@ Los datos utilizados son de una tienda de artículos tecnológicos.
 
 
 
-#### 3) Datalake (Hadoop)
+### 3) Datalake (Hadoop)
    
    Disponibilizar los elementos del sistema de archivos del namenode en el sistema de archivos del cluster (hdfs):
 
