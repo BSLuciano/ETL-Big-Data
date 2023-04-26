@@ -187,6 +187,7 @@ Los datos utilizados son de una tienda de artículos tecnológicos.
    Ingresar a la consola de Hive:
 
 ####	>> docker exec -it hive-server bash
+####	>> hive
 
    Crear la base de datos:
 	
